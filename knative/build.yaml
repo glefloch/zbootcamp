@@ -1,0 +1,24 @@
+apiVersion: build.knative.dev/v1alpha1
+kind: Build
+metadata:
+  name: gopath-test
+  labels:
+    expect: succeeded
+spec:
+  sources:
+  - name: build-git
+    targetPath: go/src/github.com/glefloch/zbootcamp
+    git:
+      url: https://github.com/glefloch/zbootcamp
+      revision: master
+  steps:
+  - name: test-build
+    image: golang
+    command: ['go']
+    args:
+    - 'test'
+    - './...'
+    workingDir: "/workspace/go/src/github.com/glefloch/zbootcamp"
+    env:
+    - name: GOPATH
+      value: /workspace/go
