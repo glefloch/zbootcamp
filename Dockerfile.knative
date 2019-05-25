@@ -3,9 +3,9 @@ FROM golang:latest as builder
 COPY . .
 WORKDIR go/src/github.com/glefloch/zbootcamp
 
-RUN CGO_ENABLED=0 GOOS=linux go build -v -o zbootcamp
+RUN CGO_ENABLED=0 GOOS=linux go build -v -o /zbootcamp
 
 FROM scratch
-COPY --from=builder go/src/github.com/glefloch/zbootcamp/zbootcamp /zbootcamp
+COPY --from=builder /zbootcamp /zbootcamp
 
 ENTRYPOINT ["/zbootcamp"]
