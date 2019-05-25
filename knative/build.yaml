@@ -21,3 +21,8 @@ spec:
     env:
     - name: GOPATH
       value: /workspace/go
+  - name: build-and-push
+    image: "gcr.io/kaniko-project/executor:v0.6.0"
+    args: 
+    - "--dockerfile=/workspace/go/src/github.com/glefloch/zbootcamp/Dockerfile"
+    - "--destination=gcr.io//homemade/zbootcamp"
