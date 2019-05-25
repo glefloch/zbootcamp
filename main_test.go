@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -24,7 +23,7 @@ func TestZHandler(t *testing.T) {
 		t.Errorf("handler returned wrong status code: got %v want %v", status, http.StatusOK)
 	}
 
-	fmt.Printf(rr.Body.String())
+	expected := `{"hello": "zenika"}`
 	if body := rr.Body.String(); body != expected {
 		t.Errorf("handler returned unexpected body: got %v want %v", body, expected)
 	}

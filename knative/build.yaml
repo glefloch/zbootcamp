@@ -1,7 +1,7 @@
 apiVersion: build.knative.dev/v1alpha1
 kind: Build
 metadata:
-  name: gopath-test
+  name: zbuild
   labels:
     expect: succeeded
 spec:
@@ -17,7 +17,6 @@ spec:
     command: ['go']
     args:
     - 'test'
-    - './...'
     workingDir: "/workspace/go/src/github.com/glefloch/zbootcamp"
     env:
     - name: GOPATH
